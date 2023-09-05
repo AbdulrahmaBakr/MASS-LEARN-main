@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Contact - Mentor Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/login.css" />
+
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+<style>
+  .alert.alert-info, .button
+{ 
+   max-width: 600px; 
+   margin: 40px auto;
+   text-align: center;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="alert alert-info">
+    Boostrap Multi-Page Modal - Each <br><code>&lt;div class=&quot;modal-split&quot;&gt;&lt;/div&gt;</code> <br>Declaration is a page. 
+  </div>
+
+<!-- Button trigger modal -->
+<div class="button">
+<button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-target="#myModal" aria-controls="collapseExample">
+  Launch demo modal
+</button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      
+      </div>
+      
+      <div class="modal-body">
+	  hello
+        <div class="modal-split">
+		1
+		</div>
+		
+		<div class="modal-split">
+		2
+		</div>
+		
+		<div class="modal-split">
+		3
+		</div>	
+
+      </div>
+
+      <div class="modal-footer">
+ <!--Nothing Goes Here but is needed! -->
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="alert alert-info">
+   EX: (These divs go in the modal-body) <br><code>&lt;div class=&quot;modal-split&quot;&gt; Page 1 content goes here &lt;/div&gt;<br>&lt;div class=&quot;modal-split&quot;&gt; Page 2 content goes here &lt;/div&gt;<br>&lt;div class=&quot;modal-split&quot;&gt; and so on  &lt;/div&gt;</code>
+  </div>
+  
+
+<script>
+
+$(document).ready(function() {
+  prep_modal();
+});
+
+function prep_modal()
+{
+  $(".modal").each(function() {
+
+  var element = this;
+	var pages = $(this).find('.modal-split');
+
+  if (pages.length != 0)
+  {
+    	pages.hide();
+    	pages.eq(0).show();
+
+    	var b_button = document.createElement("button");
+                b_button.setAttribute("type","button");
+          			b_button.setAttribute("class","btn btn-primary");
+          			b_button.setAttribute("style","display: none;");
+          			b_button.innerHTML = "Back";
+
+    	var n_button = document.createElement("button");
+                n_button.setAttribute("type","button");
+          			n_button.setAttribute("class","btn btn-primary");
+          			n_button.innerHTML = "Next";
+
+    	$(this).find('.modal-footer').append(b_button).append(n_button);
+
+
+    	var page_track = 0;
+
+    	$(n_button).click(function() {
+        
+        this.blur();
+
+    		if(page_track == 0)
+    		{
+    			$(b_button).show();
+    		}
+
+    		if(page_track == pages.length-2)
+    		{
+    			$(n_button).text("Submit");
+    		}
+
+        if(page_track == pages.length-1)
+        {
+          $(element).find("form").submit();
+        }
+
+    		if(page_track < pages.length-1)
+    		{
+    			page_track++;
+
+    			pages.hide();
+    			pages.eq(page_track).show();
+    		}
+
+
+    	});
+
+    	$(b_button).click(function() {
+
+    		if(page_track == 1)
+    		{
+    			$(b_button).hide();
+    		}
+
+    		if(page_track == pages.length-1)
+    		{
+    			$(n_button).text("Next");
+    		}
+
+    		if(page_track > 0)
+    		{
+    			page_track--;
+
+    			pages.hide();
+    			pages.eq(page_track).show();
+    		}
+
+
+    	});
+
+  }
+
+  });
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+   <!-- <script src="assets/js/main.js"></script> -->
+
+</body>
+
+</html>
